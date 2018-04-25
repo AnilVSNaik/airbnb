@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  desc: MyString
+  amenities: MyString
+  house_rules: MyString
+  reviews: MyString
+  price: 1
+  host: MyString
+  location: MyString
+  similar_listings: MyString
+
+two:
+  name: MyString
+  desc: MyString
+  amenities: MyString
+  house_rules: MyString
+  reviews: MyString
+  price: 1
+  host: MyString
+  location: MyString
+  similar_listings: MyString

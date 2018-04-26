@@ -7,7 +7,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">PairBnB</a>
+  <a class="navbar-brand" href="/">PairBnB</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -17,47 +17,41 @@
       <li class="nav-item active">
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
+      <% if signed_in? %>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" <%= link_to "Listings", listings_path %></a>
       </li>
-    <% if signed_in? %>
-      
+        <li class="nav-item">
+        <a class="nav-link" <%= link_to "Logout", sign_out_path, method: :delete %></a>
+      </li>
+      <% else %>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Login
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/auth/google_oauth2">Google</a>
-          <a class="dropdown-item" href="/sign_in">Sign In</a>
+          <a class="dropdown-item" <%= link_to "Sign in with Google", "/auth/google_oauth2" %></a>
+          <a class="dropdown-item" <%= link_to "Login", sign_in_path %></a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="/sign_up">Sign Up</a>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
+      <% end %>
     </ul>
+
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
 </nav>
-  <div id="header">
-      <%= current_user.email %>
-      <%= link_to t(".sign_out"), sign_out_path, method: :delete %>
-    <% else %>
-      <%= link_to t(".sign_in"), sign_in_path %>
-    <% end %>
-  </div>
-
   <div id="flash">
     <% flash.each do |key, value| -%>
       <div id="flash_<%= key %>"><%=h value %></div>
     <% end %>
   </div>
 
-  <%= link_to "Sign in with Google", "/auth/google_oauth2" %>
+
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

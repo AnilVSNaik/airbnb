@@ -13,6 +13,5 @@ class CreateListings < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-    # add_reference :listings, :email, index: true, foreign_key: true
-    end
+  end
 end

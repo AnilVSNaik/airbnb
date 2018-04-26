@@ -6,23 +6,23 @@
 </p>
 
 <p>
-  <strong>Desc:</strong>
+  <strong>Description:</strong>
   <%= @listing.desc %>
 </p>
 
 <p>
-  <strong>Amenities:</strong>
-  <%= @listing.amenities %>
+  <strong>Place Type:</strong>
+  <%= @listing.place_type %>
 </p>
 
 <p>
-  <strong>House rules:</strong>
-  <%= @listing.house_rules %>
+  <strong>Property Type:</strong>
+  <%= @listing.property_type %>
 </p>
 
 <p>
-  <strong>Reviews:</strong>
-  <%= @listing.reviews %>
+  <strong>Room Number:</strong>
+  <%= @listing.room_number %>
 </p>
 
 <p>
@@ -31,18 +31,43 @@
 </p>
 
 <p>
-  <strong>Host:</strong>
-  <%= @listing.host %>
+  <strong>Bed Number:</strong>
+  <%= @listing.bed_number %>
 </p>
 
 <p>
-  <strong>Location:</strong>
-  <%= @listing.location %>
+  <strong>Guest Number:</strong>
+  <%= @listing.guest_number %>
 </p>
 
 <p>
-  <strong>Similar listings:</strong>
-  <%= @listing.similar_listings %>
+  <strong>Country:</strong>
+  <%= @listing.country %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @listing.state %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @listing.city %>
+</p>
+
+<p>
+  <strong>Zip Code:</strong>
+  <%= @listing.zipcode %>
+</p>
+
+<p>
+  <strong>Street Address:</strong>
+  <%= @listing.street_address %>
+</p>
+
+<p>
+  <strong>Verified:</strong>
+  <%= @listing.verified %>
 </p>
 
 <%= link_to 'Edit', edit_listing_path(@listing) %> |

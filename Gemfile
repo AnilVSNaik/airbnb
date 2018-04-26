@@ -34,6 +34,11 @@ gem "figaro"
 gem "omniauth-google-oauth2"
 
 gem "omniauth"
+
+gem "faker"
+
+gem 'carrierwave', '~> 1.0'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

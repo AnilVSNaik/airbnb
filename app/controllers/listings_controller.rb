@@ -15,10 +15,13 @@ class ListingsController < ApplicationController
   # GET /listings/new
   def new
     @listing = Listing.new
+    allowed?(action: flash, user: current_user)
+    work?(action: flash, user: current_user)    
   end
 
   # GET /listings/1/edit
   def edit
+     # allowed?(action: flash, user: current_user)
   end
 
   # POST /listings
@@ -53,7 +56,8 @@ class ListingsController < ApplicationController
 
   # DELETE /listings/1
   # DELETE /listings/1.json
-  def destroy
+  
+  def destroys
     @listing.destroy
     respond_to do |format|
       format.html { redirect_to listings_url, notice: 'Listing was successfully destroyed.' }
@@ -69,6 +73,6 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:name, :desc, :amenities, :house_rules, :reviews, :price, :host, :location, :similar_listings)
+      params.require(:listing).permit(:name, :desc, :place_type, :property_type, :room_number, :price, :bed_number, :guest_number, :country, :state, :city, :zipcode, :street_address, :verified)
     end
 end

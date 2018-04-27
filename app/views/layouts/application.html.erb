@@ -38,11 +38,14 @@
       </li>
       <% end %>
     </ul>
-
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
+    <% if signed_in? && current_user.avatar.url.present? %>
+    <%= image_tag current_user.avatar.thumb.url, class: "rounded-circle" %>
+    <% else %>
+    <% end %>
   </div>
 </nav>
   <div id="flash">

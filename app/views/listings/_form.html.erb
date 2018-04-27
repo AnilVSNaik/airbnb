@@ -86,6 +86,17 @@
     <%= f.text_field :verified %>
   </div>
   <% end %>
+
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="field">
+    <%= f.label :remote_image_url %>
+    <%= f.text_field :remote_image_url %>
+  </div>
+    
   <div class="actions">
     <%= f.submit %>
   </div>

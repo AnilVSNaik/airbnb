@@ -25,6 +25,7 @@ class UsersController < Clearance::UsersController
         phone = user_params.delete(:phone)
         country = user_params.delete(:country)
         gender = user_params.delete(:gender)
+        avatar = user_params.delete(:avatar)
 
         Clearance.configuration.user_model.new(user_params).tap do |user|
           user.email = email
@@ -35,6 +36,7 @@ class UsersController < Clearance::UsersController
           user.phone = phone
           user.country = country
           user.gender = gender
+          user.avatar = avatar
         end
      end
 
@@ -43,6 +45,6 @@ class UsersController < Clearance::UsersController
       end
 
       def permit_params
-          params.require(:user).permit(:first_name,:last_name,:email,:password,:birthday,:phone,:country,:gender)
+          params.require(:user).permit(:first_name,:last_name,:email,:password,:birthday,:phone,:country,:gender,:avatar)
       end
 end

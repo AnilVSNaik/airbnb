@@ -4,8 +4,9 @@
   <strong>Name:</strong>
   <%= @listing.name %>
 </p>
-
+<% if @listing.image.url.present? %>
 <%= image_tag @listing.image.url %>
+<% end %>
 
 <p>
   <strong>Description:</strong>

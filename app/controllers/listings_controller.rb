@@ -5,6 +5,11 @@ class ListingsController < ApplicationController
   # GET /listings.json
   def index
     @listings = Listing.all
+    if params[:search]
+      @listings = Listing.search(params[:search]).order("created_at DESC")
+    else
+      @listings = Listing.all.order("created_at DESC")
+    end
   end
 
   # GET /listings/1
@@ -57,7 +62,7 @@ class ListingsController < ApplicationController
   # DELETE /listings/1
   # DELETE /listings/1.json
   
-  def destroys
+  def destroy
     @listing.destroy
     respond_to do |format|
       format.html { redirect_to listings_url, notice: 'Listing was successfully destroyed.' }

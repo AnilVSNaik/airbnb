@@ -1,98 +1,42 @@
-<% if signed_in? %>
+<% if signed_in? %> 
 <p id="notice"><%= notice %></p>
 
-<h1>Listings</h1>
-
-<!-- <table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Desc</th>
-      <th>Place Type</th>
-      <th>Property Type</th>
-      <th>Room Number</th>
-      <th>Price</th>
-      <th>Bed Number</th>
-      <th>Guest Number</th>
-      <th>Country</th>
-      <th>State</th>
-      <th>City</th>
-      <th>Zipcode</th>
-      <th>Street Address</th>\
-      <th>Verified</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-</table> -->
-  <!-- <tbody> -->
-    <% @listings.each do |listing| %>
-      <!-- <tr> -->
-    <!--     <div class="card-deck">
-          <div class="card">
-            <div class="row">
-              <div class="col">
-            <% if listing.image.url.present? %>
-            <%= image_tag listing.image.url, class: 'card-img-top' %>
-            <% end %>
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+  <h1>Listings</h1>
+  <table>
+    <tbody>
+    <div class="container">
+        <div class="row">
+      <% @listings.each do |listing| %>
+          <div class="col-xl">
+            <div class="card" style="width: 18rem;">
+              <% if listing.image.url.present? %>
+                <%= image_tag listing.image.url, class: 'card-img-top' %>
+              <% end  %>
+                <div class="card-body">
+                <h5 class="card-title"><%= listing.name %></h5>
+                <p class="card-text"><%= listing.desc %></p>
+                <p class="card-text"><%= listing.verified %></p>
+                  <% if current_user.customer? %>
+                  <a class="btn btn-primary" <%= link_to 'Show', listing %></a></a>
+                  <% else %>
+                  <a class="btn btn-primary" <%= link_to 'Show', listing %></a></a>
+                  <a class="btn btn-primary" <%= link_to 'Edit', edit_listing_path(listing) %></a></a>
+                  <a class="btn btn-primary" <%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></a></a>
+                  <% end %>
+                  </div>
                 </div>
               </div>
+            <% end %>
             </div>
-          </div>
-        </div> -->
-<div class="row">
-  <div class="col">
-    <div class="card" style="width: 18rem;">
-      <% if listing.image.url.present? %>
-        <%= image_tag listing.image.url, class: 'card-img-top' %>
-      <% end  %>
-        <div class="card-body">
-        <h5 class="card-title"><%= listing.name %></h5>
-        <p class="card-text"><%= listing.desc %></p>
-        <p class="card-text"><%= listing.verified %></p>
-          <% if current_user.customer? %>
-          <a class="btn btn-primary" <%= link_to 'Show', listing %></a>
-          <% else %>
-          <a class="btn btn-primary" <%= link_to 'Show', listing %></a>
-          <a class="btn btn-primary" <%= link_to 'Edit', edit_listing_path(listing) %></a>
-          <a class="btn btn-primary" <%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></a>
-          <% end %>
-        </div>
-    </div>  
-<!-- 
-        <td><%= listing.name %></td>
-        <td><%= listing.desc %></td>
-        <td><%= listing.place_type %></td>
-        <td><%= listing.property_type %></td>
-        <td><%= listing.room_number %></td>
-        <td><%= listing.price %></td>
-        <td><%= listing.bed_number %></td>
-        <td><%= listing.guest_number %></td>
-        <td><%= listing.country %></td>
-        <td><%= listing.state %></td>
-        <td><%= listing.city %></td>
-        <td><%= listing.zipcode %></td>
-        <td><%= listing.street_address %></td>
-        <td><%= listing.verified%></td>
-        <td><%= link_to 'Show', listing %></td>
-          <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
-        <% if current_user.customer? %>
-        <% else %>
-          <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
- -->    <% end %>
-  <!-- </tbody> -->
-<!-- </table> -->
+    </div> 
+    </tbody>
+  </table>
 
-<br>
+  <br>
 
-<%= link_to 'New Listing', new_listing_path %>
-<% else %>
-<script type="text/javascript">
-  window.location = "/";
-</script>
+  <%= link_to 'New Listing', new_listing_path %>
+  <% else %>
+  <script type="text/javascript">
+    window.location = "/";
+  </script>
 <% end %>

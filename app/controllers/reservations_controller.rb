@@ -10,7 +10,7 @@ class ReservationsController < ApplicationController
         
         if date_checker(@rsvp.start_date, @rsvp.end_date)
             @rsvp.save
-            redirect_to root_path
+            redirect_to braintree_new_path	
         else
             redirect_to reservation_new_path
         end
@@ -36,7 +36,6 @@ class ReservationsController < ApplicationController
     end
 
     def reservation_params
-    	byebug
             params.require(:reservations).permit(:user_id, :listing_id, :guest_number, :verification, :start_date, :end_date)
     end
 end

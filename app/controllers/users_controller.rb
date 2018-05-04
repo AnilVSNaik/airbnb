@@ -7,14 +7,19 @@ class UsersController < Clearance::UsersController
 
     def create
         @user = user_from_params
-
+      respond_to do |format|
         if @user.save
-          sign_in @user
-          redirect_back_or url_after_create
+          # Tell the UserMailer to send a welcome email after save
+            ReservationMailer.welcome_email(@user).deliver_now
+     
+            format.html { redirect_to root_path notice: 'User was successfully created.' }
+            format.json { render json: @user, status: :created, location: @user }
         else
-          render template: "users/new"
+            format.html { render action: 'new' }
+            format.json { render json: @user.errors, status: :unprocessable_entity }
+          end
         end
-    end
+      end
 
      def user_from_params
         email = user_params.delete(:email)

@@ -1,6 +1,8 @@
 require 'carrierwave/orm/activerecord'
 
+
 class ApplicationController < ActionController::Base
+
   include Clearance::Controller
 	def allowed?(action:, user:)
       	if current_user.customer?

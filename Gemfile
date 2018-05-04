@@ -43,6 +43,10 @@ gem "mini_magick"
 
 gem "braintree"
 
+gem "sidekiq"
+
+gem "letter_opener", :group => :development
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -56,6 +60,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
+
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.

@@ -1,4 +1,4 @@
 class Reservation < ActiveRecord::Base
-	belongs_to :users
-	belongs_to :listings
+	belongs_to :user
+	belongs_to :listing
 end

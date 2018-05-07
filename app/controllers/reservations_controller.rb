@@ -15,8 +15,8 @@ class ReservationsController < ApplicationController
         @rsvp = Reservation.new(reservation_params)
         respond_to do |format|
 
-            if date_checker(@rsvp.start_date, @rsvp.end_date)
-                @rsvp.save        
+            if date_checker(@rsvp.start_date, @rsvp.end_date)  
+                @rsvp.save       
                 #Message produced when successfull        
                 format.html { redirect_to braintree_new_path(listing_id: @listing.id, reservation_id: @rsvp.id), notice: 'Booking was successfully created' }
                 format.json { render json: @rsvp, status: :created, location: @rsvp }     

@@ -10,7 +10,7 @@ class UsersController < Clearance::UsersController
       respond_to do |format|
         if @user.save
           # Tell the UserMailer to send a welcome email after save
-            ReservationMailer.welcome_email(@user).deliver_now
+            WelcomeJob.perform_now(current_user)
      
             format.html { redirect_to root_path notice: 'User was successfully created.' }
             format.json { render json: @user, status: :created, location: @user }
@@ -19,6 +19,19 @@ class UsersController < Clearance::UsersController
             format.json { render json: @user.errors, status: :unprocessable_entity }
           end
         end
+      end
+
+      def edit
+        @user = current_user
+      end
+
+    def update
+          @user = current_user
+          if @user.update(permit_params)
+              redirect_to root_path notice: 'Your details have been changed'
+          else
+              render 'edit'
+          end
       end
 
      def user_from_params

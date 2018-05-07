@@ -45,6 +45,8 @@ gem "braintree"
 
 gem "sidekiq"
 
+gem "fog-aws"
+
 gem "letter_opener", :group => :development
 
 # Use ActiveStorage variant

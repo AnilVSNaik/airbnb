@@ -18,10 +18,10 @@ class BraintreeController < ApplicationController
 	      :submit_for_settlement => true
 	    }
 	   )
-	  byebug
 	  @user = current_user
 	  if result.success?
-	  	ReservationMailer.reservation_email(current_user, @listing, @rsvp_id).deliver_now
+	  	# ReservationMailer.reservation_email(current_user, @listing, @rsvp_id).deliver_now
+	  	ReservationJob.perform_now(current_user, @listing, @rsvp_id)
 	  	reservation.status = true  
 	    redirect_to :root, :flash => { :success => "Transaction successful!" }
 

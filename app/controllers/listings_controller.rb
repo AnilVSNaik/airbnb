@@ -8,7 +8,7 @@ class ListingsController < ApplicationController
     if params[:search]
       @listings = Listing.search(params[:search]).order("created_at DESC")
     else
-      @listings = Listing.all.order("created_at DESC")
+      @listings = Listing.all.order(:created_at).paginate(:page => params[:page], :per_page => 9)
     end
   end
 
@@ -59,8 +59,6 @@ class ListingsController < ApplicationController
     end
   end
 
-  # DELETE /listings/1
-  # DELETE /listings/1.json
   
   def destroy
     @listing.destroy
@@ -80,4 +78,5 @@ class ListingsController < ApplicationController
     def listing_params
       params.require(:listing).permit(:name, :desc, :place_type, :property_type, :room_number, :price, :bed_number, :guest_number, :country, :state, :city, :zipcode, :street_address, :verified, :image)
     end
+
 end

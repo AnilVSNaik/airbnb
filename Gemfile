@@ -47,6 +47,8 @@ gem "sidekiq"
 
 gem "fog-aws"
 
+gem 'will_paginate', '~> 3.1.0'
+
 gem "letter_opener", :group => :development
 
 # Use ActiveStorage variant

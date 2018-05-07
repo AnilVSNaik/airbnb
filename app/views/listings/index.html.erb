@@ -33,9 +33,9 @@
   </table>
 
   <br>
+  <button class="new_listing"><a id="listing_link" <%= link_to 'New Listing', new_listing_path %></a></a></button>
 
   <%= will_paginate @listings %>
-  <%= link_to 'New Listing', new_listing_path %>
   <style type="text/css">
   .pagination {
     font-size: 12px;
@@ -63,6 +63,24 @@
 
 .pagination .disabled {
     color: #C0C0C0;
+}
+
+.new_listing {
+  background-color: rgba(253,77,77,1);
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  margin-left: 100vh;
+}
+
+.new_listing:hover {
+  background-color: rgba(253,77,77,0.6);
+}
+
+#listing_link {
+  text-decoration: none;
+  color: white;
 }
 </style>
   <% else %>
